@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:24:13 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/18 14:12:28 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/01/19 17:58:45 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long		ft_atol(const char *str);
-
+char		*ft_charjoin(char *str, char c);
 
 #endif
