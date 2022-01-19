@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:29:47 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/19 19:08:47 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/01/19 23:49:58 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,24 @@ void	global_init(void)
 
 void	kill_to_client(int sig)
 {
-	if (kill(g_char.pid, SIGUSR1) == -1)
+	if (kill(g_char.pid, sig) == -1)
 		ft_printf("Error: kill failed\n");
 }
 
-void	sig_handler(int signum, siginfo_t *siginfo, void *context)
+static char	*print_string(char *str)
+{
+	ft_printf("\nPID [");
+	ft_printf("%d", g_char.pid);
+	ft_printf("] >> ");
+	if (!str)
+		ft_printf("\n");
+	else
+		ft_printf("%s\n", str);
+	free(g_char.str);
+	return (NULL);
+}
+
+void	bits_to_char(int signum, siginfo_t *siginfo, void *context)
 {
 	int	bit;
 	
@@ -43,8 +56,8 @@ void	sig_handler(int signum, siginfo_t *siginfo, void *context)
 	{
 		if (!g_char.c)
 		{
-			g_char.str = (ft_printf("%s\n", g_char.str), NULL);
-			kill_to_client(SIGUSR1);
+			g_char.str = print_string(g_char.str);
+			kill_to_client(SIGUSR2);
 		}
 		else
 			g_char.str = ft_charjoin(g_char.str, g_char.c);
@@ -57,7 +70,6 @@ int	main(int argc, char **argv)
 {
 	(void)argv;
 	struct sigaction	sig;
-	pid_t				pid;
 	
 	if (argc != 1)
 		return (ft_printf("Too much arguments...\n"), -1);
@@ -65,7 +77,7 @@ int	main(int argc, char **argv)
 	sigaddset(&sig.sa_mask, SIGUSR1);
 	sigaddset(&sig.sa_mask, SIGUSR2);
 	sig.sa_flags = SA_SIGINFO;
-	sig.sa_sigaction = sig_handler;
+	sig.sa_sigaction = bits_to_char;
 	global_init();
 	g_char.str = NULL;
 	print_menu();

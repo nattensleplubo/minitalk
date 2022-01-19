@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:29:14 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/19 19:08:24 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/01/19 23:20:39 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_minitalk
 }	t_minitalk;
 
 void	print_menu(void);
+void	bits_to_char(int signum, siginfo_t *siginfo, void *context);
 
 #endif

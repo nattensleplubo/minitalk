@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:24:13 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/19 17:58:45 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/01/19 21:42:21 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 long		ft_atol(const char *str);
 char		*ft_charjoin(char *str, char c);
+int			ft_str_all_digit(char *str);
 
 #endif
