@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   print_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 15:29:14 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/19 19:08:24 by ngobert          ###   ########.fr       */
+/*   Created: 2022/01/19 18:15:36 by ngobert           #+#    #+#             */
+/*   Updated: 2022/01/19 19:09:07 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include "libft/libft.h"
-# include "libft/ft_printf/ft_printf.h"
-# include <sys/types.h>
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-
-typedef struct s_minitalk
+void	print_menu(void)
 {
-	char	c;
-	int		bits;
-	char	*str;
-	int		pid;
-}	t_minitalk;
-
-void	print_menu(void);
-
-#endif
+	ft_putendl_fd(" _____ _     _ _       _ _   ", 1);
+	ft_putendl_fd("|     |_|___|_| |_ ___| | |_ ", 1);
+	ft_putendl_fd("| | | | |   | |  _| .'| | '_|", 1);
+	ft_putendl_fd("|_|_|_|_|_|_|_|_| |__,|_|_,_|", 1);
+	ft_putendl_fd("                             ", 1);
+	ft_printf("PID : %d\n", getpid());
+}
