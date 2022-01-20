@@ -6,7 +6,7 @@
 /*   By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:29:22 by ngobert           #+#    #+#             */
-/*   Updated: 2022/01/19 23:58:26 by ngobert          ###   ########.fr       */
+/*   Updated: 2022/01/20 11:55:43 by ngobert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static t_minitalk g_minitalk;
 static void	kill_to_server(int signum, int pid)
 {
 	if (kill(pid, signum) == -1)
+	{
 		ft_printf("Error: kill failed\n");
+		exit (1);
+	}
 }
 
 int		kill_null(int pid)
