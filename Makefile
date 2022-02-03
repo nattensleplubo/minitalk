@@ -6,11 +6,9 @@
 #    By: ngobert <ngobert@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 10:08:29 by ngobert           #+#    #+#              #
-#    Updated: 2022/01/20 11:02:43 by ngobert          ###   ########.fr        #
+#    Updated: 2022/02/03 09:57:44 by ngobert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-.PHONY: libft all bonus clean fclean re
 
 NAME_SV = server
 NAME_CL = client
@@ -32,7 +30,9 @@ libft:
 $(%.o): $(%.c)
 	$(CC) -o $@ -c $^
 
-$(NAME_SV): libft $(OBJS_SV)
+$(NAME_SV): $(OBJS_SV)
+	make -C libft bonus
+	make -C libft/ft_printf
 	$(CC) -o $@ $(OBJS_SV) libft/libft.a libft/ft_printf/libftprintf.a
 
 $(NAME_CL): libft $(OBJS_CL)
